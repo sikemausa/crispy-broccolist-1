@@ -1,8 +1,13 @@
+body {
+  font-size: 150%;
+}
+
 .listcontainer li {
   border: 3px solid black;
   font-size: 100%;
   margin: 5px;
   padding: 5px;
+  width: 100%;
 }
 
 .listcontainer {
@@ -12,4 +17,8 @@
 
 .listcontainer button {
   float: right;
+}
+
+.read {
+  background-color: gray;
 }
