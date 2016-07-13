@@ -21,15 +21,24 @@ margin: auto;
 
 
 .listcontainer {
-  display: flex;
-  flex-direction: column;
   margin-top: 20px;
 }
 
 .listcontainer button {
-  float: right;
+  /*margin-left: auto;*/
 }
 
 .read {
   background-color: gray;
+}
+
+.buttonwrapper {
+  /*float: right;
+  flex-wrap: wrap;
+  display: flex;*/
+  flex: 1;
+}
+
+.datawrapper{
+  flex: 3;
 }
