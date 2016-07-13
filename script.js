@@ -35,7 +35,7 @@ var submitArticle = $('.submit').on('click', function() {
   var title = $('.titleinput').val();
   var url = $('.urlinput').val();
   if (title === "" || url === "") {
-    $('.inputcontainer').append("please be better");
+    $('.error-message').text("Please be better");
   } else {
     $('.listcontainer ul').prepend("<li>" +
                                      "<article>" +
