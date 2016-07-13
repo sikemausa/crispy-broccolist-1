@@ -1,17 +1,30 @@
-var title = $('.titleinput');
-var url = $('.urlinput');
-
 // add new article to the top of the list
 
 var submitArticle = $('.submit').on('click', function() {
-  $('.listcontainer ul').prepend('<li><article><p>'+ $('.titleinput').val()+ '</p><a href>'+ $('.urlinput').val()+ '</a><button class = "readToggle">Read</button><button class = "deleteToggle">Remove</button></article></li>');
+  var title = $('.titleinput').val();
+  var url = $('.urlinput').val();
+  if (title === "" || url === "") {
+    $('.inputcontainer').append("please be better");
+  } else {
+    $('.listcontainer ul').prepend("<li>" +
+                                     "<article>" +
+                                       "<p>" + title + "</p>" +
+                                       "<a href='"+ url + "'>" + url + "</a>" +
+                                       "<button class ='readToggle'>Read</button>" +
+                                       "<button class ='deleteToggle'>Remove</button>" +
+                                     "</article>" +
+                                   "</li>");
+  }
 });
 
-var markAsRead = $('.readToggle').on('click', function() {
+var markAsRead = $('.listcontainer ul').on('click', 'button.readToggle',function() {
   $(this).parentsUntil("ul").toggleClass('read');
 });
 
-
-var deleteArticle = $('.deleteToggle').on('click', function() {
+var deleteArticle = $('.listcontainer ul').on('click', 'button.deleteToggle' , function() {
   $(this).parentsUntil("ul").remove();
 });
+
+// var countTotal = $('article').length.on('click', 'button.submitArticle', function () {
+//   $('.totalcount').html("total" + (this));
+// });

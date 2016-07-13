@@ -1,18 +1,29 @@
 body {
   font-size: 150%;
+  margin-top: 20px;
+}
+
+.inputcontainer {
+width: 90%;
+outline: 4px solid black;
+margin: auto;
 }
 
 .listcontainer li {
   border: 3px solid black;
   font-size: 100%;
-  margin: 5px;
   padding: 5px;
-  width: 100%;
+  width: 90%;
+  margin: 5px auto 5px auto;
+  flex-wrap: wrap;
+  display: flex;
 }
+
 
 .listcontainer {
   display: flex;
   flex-direction: column;
+  margin-top: 20px;
 }
 
 .listcontainer button {
