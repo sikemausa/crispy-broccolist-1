@@ -1,5 +1,8 @@
 <html>
   <head>
+    <title>Crispy-Broccolist</title>
+    <link rel="shortcut icon" href="images/crispybroccolist.png".>
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
   </head>
@@ -13,10 +16,12 @@
         <input type='text' placeholder="Enter a Title" class="titleinput">Title</input>
         <input placeholder="Enter your URL" class="urlinput" type="url" pattern="https?://.+" required />URL</input>
         <button class="submit" disabled=true>Submit</button>
-        <button class="clearreadbookmarks">clear read bookmarks</button>
-        <p class="totalcount"></p>
-        <p class="totalread"></p>
-        <p class="totalunread"></p>
+        <div class="count-container">
+          <button class="clearreadbookmarks" disabled=true>Clear Read Flags</button>
+          <p class="totalcount"></p>
+          <p class="totalread"></p>
+          <p class="totalunread"></p>
+        </div>
       </div>
     </section>
 
@@ -27,7 +32,7 @@
         <li>
           <article>
             <p>Google</p>
-            <a href="https://www.google.com">google</a>
+            <a href="https://www.google.com">Visit</a>
             <button class = "readToggle">Read</button>
             <button class = "deleteToggle">Remove</button>
           </article>

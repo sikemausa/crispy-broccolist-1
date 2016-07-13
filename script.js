@@ -1,8 +1,16 @@
+
 function countAll () {
   $('.totalcount').text("Total Count: " + $('article').length);
   $('.totalread').text("Read Count: " + $('li.read').length);
   $('.totalunread').text("Unread Count: " + ($('article').length - $('li.read').length));
+  toggleClear();
 };
+
+function toggleClear () {
+  if ($('li.read').length === 0) {$('.clearreadbookmarks').attr("disabled", true);
+  } else {$('.clearreadbookmarks').attr("disabled", false);
+  }
+}
 
 function checkBothInputs() {
   // if (!(isUrl($('.urlinput').val()))) { return $('.submit').attr("disabled", true) }
@@ -64,4 +72,5 @@ var deleteArticle = $('.listcontainer ul').on('click', 'button.deleteToggle' , f
 
 var clearRead = $('.inputcontainer').on('click', 'button.clearreadbookmarks',function() {
   $('ul').children().removeClass('read');
+  countAll()
 });
