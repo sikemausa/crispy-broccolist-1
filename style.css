@@ -33,7 +33,6 @@ article p, article a {
   color: white;
   text-shadow: 3px 3px 5px #000000;
   display: block;
-  float: left;
 }
 
 
@@ -49,8 +48,6 @@ article p, article a {
 article a {
   text-decoration: none;
   color: aqua;
-  clear: left;
-  display: block;
 }
 
 .read {
@@ -103,6 +100,5 @@ button {
   display: inline;
 }
 article button {
-  float: right;
-  margin: 5px;
+  margin-left: 60px;
 }

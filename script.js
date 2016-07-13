@@ -13,7 +13,6 @@ function toggleClear () {
 }
 
 function checkBothInputs() {
-  // if (!(isUrl($('.urlinput').val()))) { return $('.submit').attr("disabled", true) }
   if ($('.urlinput').val().length === 0) { return $('.submit').attr("disabled", true) }
   if ($('.titleinput').val().length === 0) { return $('.submit').attr("disabled", true) }
   return $('.submit').attr("disabled", false);
