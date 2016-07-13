@@ -1,7 +1,7 @@
 function countAll () {
-  $('.totalcount').text($('article').length);
-  $('.totalread').text($('li .read').length);
-  $('.totalunread').text($('article').length - $('li .read').length)
+  $('.totalcount').text("Total Count: " + $('article').length);
+  $('.totalread').text("Read Count: " + $('li .read').length);
+  $('.totalunread').text("Unread Count: " + ($('article').length - $('li .read').length));
 };
 
 function checkBothInputs () {
@@ -56,6 +56,12 @@ var markAsRead = $('.listcontainer ul').on('click', 'button.readToggle',function
 
 var deleteArticle = $('.listcontainer ul').on('click', 'button.deleteToggle' , function() {
   $(this).parentsUntil("ul").remove();
+  countAll();
+});
+
+var clearRead = $('.inputcontainer').on('click', 'button.clearreadbookmarks',function() {
+  // $('ul').children().removeClass('read');
+  $('.readToggle').parentsUntil("ul").removeClass('read');
   countAll();
 });
 

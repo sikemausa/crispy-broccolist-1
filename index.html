@@ -9,8 +9,9 @@
 
     <section class="inputcontainer">
       <input type='text' placeholder="Enter a Title" class="titleinput">Title</input>
-      <input  type='url' placeholder="Enter your URL" class="urlinput">URL</input>
+      <input placeholder="Enter your URL" class="urlinput" type="url" pattern="https?://.+" required />URL</input>
       <button class="submit" disabled=true>Submit</button>
+      <button class="clearreadbookmarks">clear read bookmarks</button>
       <p class="totalcount"></p>
       <p class="totalread"></p>
       <p class="totalunread"></p>
