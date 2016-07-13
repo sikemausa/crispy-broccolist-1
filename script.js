@@ -1,70 +1,67 @@
 function countAll () {
   $('.totalcount').text("Total Count: " + $('article').length);
-  $('.totalread').text("Read Count: " + $('li .read').length);
-  $('.totalunread').text("Unread Count: " + ($('article').length - $('li .read').length));
+  $('.totalread').text("Read Count: " + $('li.read').length);
+  $('.totalunread').text("Unread Count: " + ($('article').length - $('li.read').length));
 };
 
-function checkBothInputs () {
-  if ($('.urlinput').val().length === 0) {
-    $('.submit').attr("disabled", true)
-  } else if ($('.titleinput').val().length === 0) {
-    $('.submit').attr("disabled", true)
-    } else {
-    $('.submit').attr("disabled", false)
-    }
+function checkBothInputs() {
+  // if (!(isUrl($('.urlinput').val()))) { return $('.submit').attr("disabled", true) }
+  if ($('.urlinput').val().length === 0) { return $('.submit').attr("disabled", true) }
+  if ($('.titleinput').val().length === 0) { return $('.submit').attr("disabled", true) }
+  return $('.submit').attr("disabled", false);
+}
+
+function isUrl(s) {
+  var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
+  return regexp.test(s);
 }
 
 countAll()
 
-var checkInputs = $('.titleinput').on('keyup', function() {
+// keyup functions to check inputs
+
+
+$('.titleinput').on('keyup', function() {
   checkBothInputs()
 });
 
-var checkInputs = $('.urlinput').on('keyup', function() {
+$('.urlinput').on('keyup', function() {
   checkBothInputs()
 });
-
-// var checkUrl = $('.urlinput').on('keyup', function(){
-//   $('.submit').attr("disabled", false)
-// });
-
 
 // add new article to the top of the list
 
 var submitArticle = $('.submit').on('click', function() {
   var title = $('.titleinput').val();
   var url = $('.urlinput').val();
-  if (title === "" || url === "") {
-    $('.error-message').text("Please be better");
+  if (!(isUrl($('.urlinput').val()))) {
+    $('.error-message').text("Not a valid URL");
   } else {
     $('.listcontainer ul').prepend("<li>" +
                                      "<article>" +
                                        "<p>" + title + "</p>" +
-                                       "<a href='"+ url + "'>" + url + "</a>" +
+                                       "<a href='"+ url + "'>Visit</a>" +
                                        "<button class ='readToggle'>Read</button>" +
                                        "<button class ='deleteToggle'>Remove</button>" +
                                      "</article>" +
                                    "</li>");
     countAll();
+      $('.error-message').text("");
   }
 });
 
+//click buttons to clear or class articles
+
 var markAsRead = $('.listcontainer ul').on('click', 'button.readToggle',function() {
-  $(this).parentsUntil("ul").toggleClass('read');
+  $(this).parents("li").toggleClass('read');
   countAll();
 });
 
 var deleteArticle = $('.listcontainer ul').on('click', 'button.deleteToggle' , function() {
-  $(this).parentsUntil("ul").remove();
+  $(this).parents("li").remove();
   countAll();
 });
 
 var clearRead = $('.inputcontainer').on('click', 'button.clearreadbookmarks',function() {
-  // $('ul').children().removeClass('read');
-  $('.readToggle').parentsUntil("ul").removeClass('read');
-  countAll();
+  $('ul').children().removeClass('read');
 });
-
-// var countTotal = $('article').length.on('click', 'button.submitArticle', function () {
-//   $('.totalcount').html("total" + (this));
-// });
