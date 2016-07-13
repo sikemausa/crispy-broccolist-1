@@ -34,8 +34,11 @@ var checkInputs = $('.urlinput').on('keyup', function() {
 var submitArticle = $('.submit').on('click', function() {
   var title = $('.titleinput').val();
   var url = $('.urlinput').val();
+  if (title.length > 0 && url.length > 0) {
+    $('.submit').attr("disabled", false);
+  }
   if (title === "" || url === "") {
-    $('.inputcontainer').append("please be better");
+    $('.error-message').text("Please be better");
   } else {
     $('.listcontainer ul').prepend("<li>" +
                                      "<article>" +
