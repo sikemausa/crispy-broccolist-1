@@ -1,8 +1,20 @@
+function countTotal () {
+  $('.totalcount').text("Total Count: " + $('article').length);
+}
+
+function countRead () {
+  $('.totalread').text("Read Count: " + $('li.read').length);
+}
+
+function countUnread () {
+  $('.totalunread').text("Unread Count: " + ($('article').length - $('li.read').length));
+}
+
 
 function countAll () {
-  $('.totalcount').text("Total Count: " + $('article').length);
-  $('.totalread').text("Read Count: " + $('li.read').length);
-  $('.totalunread').text("Unread Count: " + ($('article').length - $('li.read').length));
+  countTotal();
+  countRead();
+  countUnread();
   toggleClear();
 };
 
@@ -41,7 +53,7 @@ $('.urlinput').on('keyup', function() {
 var submitArticle = $('.submit').on('click', function() {
   var title = $('.titleinput').val();
   var url = $('.urlinput').val();
-  if (!(isUrl($('.urlinput').val()))) {
+  if (!(isUrl(url))) {
     $('.error-message').text("Not a valid URL");
   } else {
     $('.listcontainer ul').prepend("<li>" +
