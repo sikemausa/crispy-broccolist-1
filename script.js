@@ -10,7 +10,6 @@ function countUnread () {
   $('.totalunread').text("Unread Count: " + ($('article').length - $('li.read').length));
 }
 
-
 function countAll () {
   countTotal();
   countRead();
@@ -19,8 +18,10 @@ function countAll () {
 };
 
 function toggleClear () {
-  if ($('li.read').length === 0) {$('.clearreadbookmarks').attr("disabled", true);
-  } else {$('.clearreadbookmarks').attr("disabled", false);
+  if ($('li.read').length === 0) {
+    $('.clearreadbookmarks').attr("disabled", true);
+  } else {
+    $('.clearreadbookmarks').attr("disabled", false);
   }
 }
 
@@ -32,13 +33,12 @@ function checkBothInputs() {
 
 function isUrl(s) {
   var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-  return regexp.test(s);
+  return (regexp.test(s);
 }
 
 countAll()
 
 // keyup functions to check inputs
-
 
 $('.titleinput').on('keyup', function() {
   checkBothInputs()
@@ -48,26 +48,33 @@ $('.urlinput').on('keyup', function() {
   checkBothInputs()
 });
 
-// add new article to the top of the list
+// add new article to the top of the listd
 
-var submitArticle = $('.submit').on('click', function() {
-  var title = $('.titleinput').val();
-  var url = $('.urlinput').val();
-  if (!(isUrl(url))) {
-    $('.error-message').text("Not a valid URL");
-  } else {
-    $('.listcontainer ul').prepend("<li>" +
-                                     "<article>" +
-                                       "<p>" + title + "</p>" +
-                                       "<a href='"+ url + "'>Visit</a>" +
-                                       "<button class ='readToggle'>Read</button>" +
-                                       "<button class ='deleteToggle'>Remove</button>" +
-                                     "</article>" +
-                                   "</li>");
-    countAll();
+function articleTemplate(url, title) {
+  return "<li>" +
+           "<article>" +
+             "<p>" + title + "</p>" +
+             "<a href='"+ url + "'>Visit</a>" +
+             "<button class ='readToggle'>Read</button>" +
+             "<button class ='deleteToggle'>Remove</button>" +
+           "</article>" +
+         "</li>";
+}
+
+function submitArticle() {
+  $('.submit').on('click', function() {
+    var title = $('.titleinput').val();
+    var url = $('.urlinput').val();
+    if (!(isUrl(url))) {
+      $('.error-message').text("Not a valid URL");
+    } else {
+      $('.listcontainer ul').prepend(articleTemplate(url, title));
+      countAll();
       $('.error-message').text("");
-  }
-});
+    }
+  });
+}
+
 
 //click buttons to clear or class articles
 
