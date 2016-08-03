@@ -10,12 +10,14 @@ function countUnread () {
   $('.totalunread').text("Unread Count: " + ($('article').length - $('li.read').length));
 }
 
+countAll();
+
 function countAll () {
   countTotal();
   countRead();
   countUnread();
   toggleClear();
-};
+}
 
 function toggleClear () {
   if ($('li.read').length === 0) {
@@ -26,26 +28,26 @@ function toggleClear () {
 }
 
 function checkBothInputs() {
-  if ($('.urlinput').val().length === 0) { return $('.submit').attr("disabled", true) }
-  if ($('.titleinput').val().length === 0) { return $('.submit').attr("disabled", true) }
+  if ($('.urlinput').val().length === 0) { return $('.submit').attr("disabled", true);}
+  if ($('.titleinput').val().length === 0) { return $('.submit').attr("disabled", true);}
   return $('.submit').attr("disabled", false);
 }
 
 function isUrl(s) {
-  var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/
-  return (regexp.test(s);
+  var regexp = /(ftp|http|https):\/\/(\w+:{0,1}\w*@)?(\S+)(:[0-9]+)?(\/|\/([\w#!:.?+=&%@!\-\/]))?/;
+  return (regexp.test(s));
 }
 
-countAll()
+
 
 // keyup functions to check inputs
 
 $('.titleinput').on('keyup', function() {
-  checkBothInputs()
+  checkBothInputs();
 });
 
 $('.urlinput').on('keyup', function() {
-  checkBothInputs()
+  checkBothInputs();
 });
 
 // add new article to the top of the listd
@@ -75,6 +77,13 @@ function submitArticle() {
   });
 }
 
+submitArticle();
+
+// function bindEventListeners() {
+//   submitArticle();
+//   ...
+// }
+
 
 //click buttons to clear or class articles
 
@@ -90,5 +99,7 @@ var deleteArticle = $('.listcontainer ul').on('click', 'button.deleteToggle' , f
 
 var clearRead = $('.inputcontainer').on('click', 'button.clearreadbookmarks',function() {
   $('ul').children().removeClass('read');
-  countAll()
+  countAll();
 });
+
+// bindEventListeners();
